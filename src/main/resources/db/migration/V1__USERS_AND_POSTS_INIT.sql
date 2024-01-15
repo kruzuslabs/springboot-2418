@@ -20,3 +20,13 @@ CREATE TABLE IF NOT EXISTS resources
   author_id   UUID         NOT NULL REFERENCES "users" (id),
   created_at  TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+CREATE TABLE IF NOT EXISTS media
+(
+  id          SERIAL PRIMARY KEY,
+  title       VARCHAR(100) NOT NULL,
+  description VARCHAR(100),
+  preferrences     TEXT[]         NOT NULL,
+  author_id   UUID         NOT NULL REFERENCES "users" (id),
+  created_at  TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
