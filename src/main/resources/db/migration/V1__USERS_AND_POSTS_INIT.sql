@@ -1,32 +1,23 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-CREATE TABLE IF NOT EXISTS users
-(
-  id              UUID         NOT NULL PRIMARY KEY DEFAULT (uuid_generate_v4()),
-  username        VARCHAR(100) NOT NULL,
+CREATE TABLE IF NOT EXISTS users (
+  id UUID NOT NULL PRIMARY KEY DEFAULT (uuid_generate_v4()),
+  username VARCHAR(50) NOT NULL,
   hashed_password VARCHAR(232) NOT NULL,
-  total_posts     INT                               DEFAULT 0,
-  created_at      TIMESTAMP WITH TIME ZONE          DEFAULT NOW(),
-  updated_at      TIMESTAMP WITH TIME ZONE          DEFAULT NOW()
+  total_posts integer DEFAULT 0,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
-
-CREATE TABLE IF NOT EXISTS resources
-(
-  id          SERIAL PRIMARY KEY,
-  title       VARCHAR(100) NOT NULL,
-  description VARCHAR(100),
-  content     TEXT         NOT NULL,
-  author_id   UUID         NOT NULL REFERENCES "users" (id),
-  created_at  TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+CREATE TABLE IF NOT EXISTS tasks (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(100) NOT NULL,
+  content TEXT NOT NULL,
+  severity INT NOT NULL DEFAULT 0,
+  author_id UUID NOT NULL REFERENCES "users" (id),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
-CREATE TABLE IF NOT EXISTS media
-(
-  id          SERIAL PRIMARY KEY,
-  title       VARCHAR(100) NOT NULL,
-  description VARCHAR(100),
-  preferrences     TEXT[]         NOT NULL,
-  author_id   UUID         NOT NULL REFERENCES "users" (id),
-  created_at  TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+CREATE INDEX ON tasks(title);
+
+CREATE INDEX ON tasks(content);
