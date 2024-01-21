@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tasks", schema = "public", catalog = "skoozle")
 public class TaskEntity {
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "id", nullable = false)
     private int id;
