@@ -19,9 +19,6 @@ CREATE TABLE IF NOT EXISTS tasks (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- find tasks by title
-CREATE INDEX ON tasks(title);
-
 -- find tasks by content
 CREATE INDEX ON tasks(content);
 
