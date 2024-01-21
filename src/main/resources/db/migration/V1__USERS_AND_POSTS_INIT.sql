@@ -14,11 +14,15 @@ CREATE TABLE IF NOT EXISTS tasks (
   title VARCHAR(100) NOT NULL,
   content TEXT NOT NULL,
   completed BOOLEAN NOT NULL DEFAULT FALSE,
-  severity INT NOT NULL DEFAULT 0,
+  severity SMALLINT NOT NULL DEFAULT 0,
   author_id UUID NOT NULL REFERENCES "users" (id),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+-- find tasks by title
 CREATE INDEX ON tasks(title);
 
+-- find tasks by content
 CREATE INDEX ON tasks(content);
+
+-- maybe something else?
