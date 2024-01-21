@@ -1,6 +1,6 @@
 # Springboot project
 
-Basic stuff
+Remake of my other project, "Task Manager". 
 
 ### Task Endpoints:
 
