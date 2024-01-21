@@ -22,9 +22,13 @@ public class TaskController {
 
     @GetMapping("all")
     public ResponseEntity<List<TaskEntity>> findAll() {
-        List<TaskEntity> tasks = this.tasksRepository.findAll();
+        List<TaskEntity> _tasks = this.tasksRepository.findAll();
 
-        return new ResponseEntity<List<TaskEntity>>(tasks, HttpStatus.OK);
+        if (_tasks.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<List<TaskEntity>>(_tasks, HttpStatus.OK);
 
+        }
     }
 }

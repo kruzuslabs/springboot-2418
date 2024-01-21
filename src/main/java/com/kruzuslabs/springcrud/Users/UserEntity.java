@@ -91,6 +91,9 @@ public class UserEntity {
         return true;
     }
 
+    public UserEntity() {
+    }
+
     public UserEntity(UUID id, String userName, String hashedPassword, int totalPosts, Date createdAt, Date updatedAt) {
         this.id = id;
         this.userName = userName;
