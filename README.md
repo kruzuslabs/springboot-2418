@@ -1,33 +1,33 @@
 # Springboot project
 
-Remake of my other project, "Task Manager". 
+Remake of my other project, "Ticket Manager". 
 
-### Task Endpoints:
+### Ticket Endpoints:
 
-1. **Create Task:**
-   - Endpoint: `POST /api/tasks`
-   - Description: Create a new task.
-   - Request Body: Task details (e.g., title, description, due date).
-   - Response: Task details along with an identifier.
+1. **Create Ticket:**
+   - Endpoint: `POST /api/tickets`
+   - Description: Create a new tickets.
+   - Request Body: tickets details (e.g., title, description, due date).
+   - Response: tickets details along with an identifier.
 
-2. **Edit Task:**
-   - Endpoint: `PUT /api/tasks/{taskId}`
-   - Description: Update an existing task.
-   - Request Body: Updated task details.
-   - Path Variable: taskId (unique identifier for the task).
-   - Response: Updated task details.
+2. **Edit Ticket:**
+   - Endpoint: `PUT /api/tickets/{ticketId}`
+   - Description: Update an existing tickets.
+   - Request Body: Updated tickets details.
+   - Path Variable: ticketId (unique identifier for the tickets).
+   - Response: Updated tickets details.
 
-3. **View Task:**
-   - Endpoint: `GET /api/tasks/{taskId}`
-   - Description: Retrieve details of a specific task.
-   - Path Variable: taskId (unique identifier for the task).
-   - Response: Task details.
+3. **View Ticket:**
+   - Endpoint: `GET /api/tickets/{ticketId}`
+   - Description: Retrieve details of a specific tickets.
+   - Path Variable: ticketId (unique identifier for the tickets).
+   - Response: tickets details.
 
-4. **Search Tasks:**
-   - Endpoint: `GET /api/tasks`
-   - Description: Search tasks based on parameters (e.g., title, status, due date).
-   - Query Parameters: Allow filtering tasks based on various criteria.
-   - Response: List of tasks matching the search criteria.
+4. **Search Ticket:**
+   - Endpoint: `GET /api/tickets`
+   - Description: tickets based on parameters (e.g., title, status, due date).
+   - Query Parameters: Allow filtering tickets based on various criteria.
+   - Response: List of tickets matching the search criteria.
 
 ### User Endpoints:
 
@@ -50,8 +50,8 @@ Remake of my other project, "Task Manager".
    - Path Variable: userId (unique identifier for the user).
    - Response: Updated user details.
 
-8. **User Tasks:**
-   - Endpoint: `GET /api/users/{userId}/tasks`
-   - Description: Retrieve the list of tasks associated with a specific user.
+8. **User Tickets:**
+   - Endpoint: `GET /api/users/{userId}/tickets`
+   - Description: Retrieve the list of tickets associated with a specific user.
    - Path Variable: userId (unique identifier for the user).
-   - Response: List of tasks for the specified user.
+   - Response: List of tickets for the specified user.
