@@ -1,4 +1,4 @@
-package com.kruzuslabs.springcrud.Tasks;
+package com.kruzuslabs.springcrud.Tickets;
 
 import java.util.Date;
 import java.util.UUID;
@@ -12,8 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tasks")
-public class TaskEntity {
+@Table(name = "tickets")
+public class TicketsEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "id", nullable = false)
@@ -43,11 +43,15 @@ public class TaskEntity {
     @Column(name = "created_at", nullable = true)
     private Date created_at;
 
-    public TaskEntity() {
+    @Basic
+    @Column(name = "due_date", nullable = true)
+    private Date due_date;
+
+    public TicketsEntity() {
 
     }
 
-    public TaskEntity(int id, String title, String content, boolean completed, short severity, UUID authUuid,
+    public TicketsEntity(int id, String title, String content, boolean completed, short severity, UUID authUuid,
             Date created_at) {
         this.id = id;
         this.title = title;

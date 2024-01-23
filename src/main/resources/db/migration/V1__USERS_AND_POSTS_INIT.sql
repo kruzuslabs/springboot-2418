@@ -5,21 +5,23 @@ CREATE TABLE IF NOT EXISTS users (
   username VARCHAR(50) NOT NULL,
   hashed_password VARCHAR(232) NOT NULL,
   total_posts integer DEFAULT 0,
+  role VARCHAR(5) NOT NULL DEFAULT 'userd',
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
-CREATE TABLE IF NOT EXISTS tasks (
+CREATE TABLE IF NOT EXISTS tickets (
   id SERIAL PRIMARY KEY,
   title VARCHAR(100) NOT NULL,
   content TEXT NOT NULL,
   completed BOOLEAN NOT NULL DEFAULT FALSE,
   severity SMALLINT NOT NULL DEFAULT 0,
   author_id UUID NOT NULL REFERENCES "users" (id),
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  due_date DATE -- Add this line to include the due_date column
 );
 
 -- find tasks by content
-CREATE INDEX ON tasks(content);
+CREATE INDEX ON tickets(content);
 
 -- maybe something else?

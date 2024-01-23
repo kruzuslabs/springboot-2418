@@ -1,4 +1,4 @@
-package com.kruzuslabs.springcrud.Tasks;
+package com.kruzuslabs.springcrud.Tickets;
 
 import java.util.List;
 
@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/tasks")
-public class TaskController {
+public class TicketsController {
 
     @Autowired
-    protected final TasksRepository tasksRepository;
+    protected final TicketsRepository tasksRepository;
 
-    public TaskController(TasksRepository tasksRepository) {
+    public TicketsController(TicketsRepository tasksRepository) {
         this.tasksRepository = tasksRepository;
     }
 
     @GetMapping("all")
-    public ResponseEntity<List<TaskEntity>> findAll() {
-        List<TaskEntity> _tasks = this.tasksRepository.findAll();
+    public ResponseEntity<List<TicketsEntity>> findAll() {
+        List<TicketsEntity> _tasks = this.tasksRepository.findAll();
 
         if (_tasks.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            return new ResponseEntity<List<TaskEntity>>(_tasks, HttpStatus.OK);
+            return new ResponseEntity<List<TicketsEntity>>(_tasks, HttpStatus.OK);
 
         }
     }

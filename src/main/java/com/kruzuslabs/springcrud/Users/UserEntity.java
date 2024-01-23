@@ -12,7 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users", schema = "public", catalog = "skoozle")
+@Table(name = "users")
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
