@@ -30,7 +30,6 @@ public class TicketsController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<List<TicketsEntity>>(_tasks, HttpStatus.OK);
-
         }
     }
 
@@ -45,7 +44,6 @@ public class TicketsController {
         } else {
             return new ResponseEntity<List<TicketsEntity>>(foundList, HttpStatus.FOUND);
         }
-
     }
 
 }

@@ -52,7 +52,7 @@ public class TicketsEntity {
     }
 
     public TicketsEntity(int id, String title, String content, boolean completed, short severity, UUID authUuid,
-            Date created_at) {
+            Date created_at, Date due_date) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -60,6 +60,7 @@ public class TicketsEntity {
         this.severity = severity;
         this.authUuid = authUuid;
         this.created_at = created_at;
+        this.due_date = due_date;
     }
 
     public int getId() {
@@ -116,6 +117,14 @@ public class TicketsEntity {
 
     public void setCreated_at(Date created_at) {
         this.created_at = created_at;
+    }
+
+    public Date getDue_date() {
+        return due_date;
+    }
+
+    public void setDue_date(Date due_date) {
+        this.due_date = due_date;
     }
 
 }
