@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS tickets (
   severity SMALLINT NOT NULL DEFAULT 0,
   author_id UUID NOT NULL REFERENCES "users" (id),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  due_date DATE -- Add this line to include the due_date column
+  due_date DATE
 );
 
 -- find tasks by content
