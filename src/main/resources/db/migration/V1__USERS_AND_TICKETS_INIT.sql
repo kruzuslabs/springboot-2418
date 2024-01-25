@@ -24,4 +24,6 @@ CREATE TABLE IF NOT EXISTS tickets (
 -- find tasks by content
 CREATE INDEX ON tickets(content);
 
+CREATE INDEX ON tickets(title);
+
 -- maybe something else?
