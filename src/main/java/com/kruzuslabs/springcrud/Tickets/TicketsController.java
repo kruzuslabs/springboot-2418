@@ -1,6 +1,7 @@
 package com.kruzuslabs.springcrud.Tickets;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,11 +24,12 @@ public class TicketsController {
     }
 
     @GetMapping("all")
-    public ResponseEntity<List<TicketsEntity>> findAll() {
+    public ResponseEntity<?> findAll() {
         List<TicketsEntity> _tasks = this.tasksRepository.findAll();
 
         if (_tasks.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(Map.of("msg", "tasks not found", "code", HttpStatus.NOT_FOUND),
+                    HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<List<TicketsEntity>>(_tasks, HttpStatus.OK);
         }
@@ -45,5 +47,7 @@ public class TicketsController {
             return new ResponseEntity<List<TicketsEntity>>(foundList, HttpStatus.FOUND);
         }
     }
+
+    // TODO: Implement more methods.
 
 }

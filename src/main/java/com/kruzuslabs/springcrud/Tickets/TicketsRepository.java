@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface TicketsRepository extends JpaRepository<TicketsEntity, Integer> {
     List<TicketsEntity> findByContentContaining(String query);
+    // TODO: add more methods here.
 }
