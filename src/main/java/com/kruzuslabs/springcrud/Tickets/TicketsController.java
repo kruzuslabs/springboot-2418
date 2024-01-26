@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/tasks")
+@RequestMapping("/api/ticket")
 public class TicketsController {
 
     @Autowired
@@ -23,12 +23,16 @@ public class TicketsController {
         this.tasksRepository = tasksRepository;
     }
 
+    // TEST: DO NOT USE FOR PROD...
+    // TESTING AREA
     @GetMapping("all")
     public ResponseEntity<?> findAll() {
         List<TicketsEntity> _tasks = this.tasksRepository.findAll();
 
         if (_tasks.isEmpty()) {
-            return new ResponseEntity<>(Map.of("msg", "tasks not found", "code", HttpStatus.NOT_FOUND),
+            return new ResponseEntity<>(Map.of(
+                    "msg", "tasks not found",
+                    "code", HttpStatus.NOT_FOUND),
                     HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<List<TicketsEntity>>(_tasks, HttpStatus.OK);
@@ -42,12 +46,28 @@ public class TicketsController {
         List<TicketsEntity> foundList = this.tasksRepository.findByContentContaining(query);
 
         if (foundList.isEmpty()) {
-            return new ResponseEntity<>(foundList, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<List<TicketsEntity>>(foundList, HttpStatus.FOUND);
         }
     }
 
-    // TODO: Implement more methods.
+    // TODO: Change Mapping
+    @GetMapping()
+    public ResponseEntity<?> createTicket() {
+        return new ResponseEntity<>("Create ticket", HttpStatus.OK);
+    }
+
+    @GetMapping("/edit/{id}")
+    public ResponseEntity<?> editTicket(@PathVariable int id) {
+        return new ResponseEntity<>(Map.of("Edit TicketID", id), HttpStatus.OK);
+    }
+
+    // api/ticket/id
+    // gets ticket by ID
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getEditByID(@PathVariable int id) {
+        return new ResponseEntity<>(Map.of("TicketID", id), HttpStatus.OK);
+    }
 
 }
