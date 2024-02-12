@@ -26,17 +26,11 @@ public class TicketsController {
     // TEST: DO NOT USE FOR PROD...
     // TESTING AREA
     @GetMapping("all")
-    public ResponseEntity<?> findAll() {
-        List<TicketsEntity> _tasks = this.tasksRepository.findAll();
+    public ResponseEntity<List<TicketsEntity>> findAll() {
+        List<TicketsEntity> tasks = tasksRepository.findAll();
 
-        if (_tasks.isEmpty()) {
-            return new ResponseEntity<>(Map.of(
-                    "msg", "tasks not found",
-                    "code", HttpStatus.NOT_FOUND),
-                    HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<List<TicketsEntity>>(_tasks, HttpStatus.OK);
-        }
+        HttpStatus status = tasks.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK;
+        return ResponseEntity.status(status).body(tasks.isEmpty() ? null : tasks);
     }
 
     // TODO: implement this
