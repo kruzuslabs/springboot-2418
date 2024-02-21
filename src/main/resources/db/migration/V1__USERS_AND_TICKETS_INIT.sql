@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS users (
   username VARCHAR(50) NOT NULL,
   hashed_password VARCHAR(232) NOT NULL,
   total_posts integer DEFAULT 0,
-  role VARCHAR(5) NOT NULL DEFAULT 'userd',
+  -- role VARCHAR(5) NOT NULL DEFAULT 'userd',
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
@@ -16,14 +16,12 @@ CREATE TABLE IF NOT EXISTS tickets (
   content TEXT NOT NULL,
   completed BOOLEAN NOT NULL DEFAULT FALSE,
   severity SMALLINT NOT NULL DEFAULT 0,
-  author_id UUID NOT NULL REFERENCES "users" (id),
+  -- author_id UUID NOT NULL REFERENCES "users" (id),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   due_date DATE
 );
 
 -- find tasks by content
 CREATE INDEX ON tickets(content);
-
-CREATE INDEX ON tickets(title);
 
 -- maybe something else?
