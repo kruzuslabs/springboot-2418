@@ -14,10 +14,10 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tickets")
 public class TicketsEntity {
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
-    private int id;
+    private long id;
 
     @Basic
     @Column(name = "title", nullable = true)
@@ -36,10 +36,6 @@ public class TicketsEntity {
     private short severity;
 
     @Basic
-    @Column(name = "author_id", nullable = true)
-    private UUID authUuid;
-
-    @Basic
     @Column(name = "created_at", nullable = true)
     private Date created_at;
 
@@ -47,23 +43,22 @@ public class TicketsEntity {
     @Column(name = "due_date", nullable = true)
     private Date due_date;
 
-    public TicketsEntity() {
-
-    }
-
-    public TicketsEntity(int id, String title, String content, boolean completed, short severity, UUID authUuid,
-            Date created_at, Date due_date) {
+    public TicketsEntity(long id, String title, String content, boolean completed, short severity, Date created_at,
+            Date due_date) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.completed = completed;
         this.severity = severity;
-        this.authUuid = authUuid;
         this.created_at = created_at;
         this.due_date = due_date;
     }
 
-    public int getId() {
+    public TicketsEntity() {
+
+    }
+
+    public long getId() {
         return id;
     }
 
@@ -101,14 +96,6 @@ public class TicketsEntity {
 
     public void setSeverity(short severity) {
         this.severity = severity;
-    }
-
-    public UUID getAuthUuid() {
-        return authUuid;
-    }
-
-    public void setAuthUuid(UUID authUuid) {
-        this.authUuid = authUuid;
     }
 
     public Date getCreated_at() {
